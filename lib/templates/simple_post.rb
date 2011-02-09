@@ -1,22 +1,15 @@
 require 'templates/base'
-require 'factory'
 
 module Templates
   class SimplePost < Base
     
-    def initialize
-      @posts = Factory.posts
-    end
-    
     def liquid
     <<-LIQUID
       <ol>
-        {% for post in posts %}
-        <li>
+        {% for post in posts %}<li>
           <h3>{{post.title}}</h3>
           <p>{{post.author}}</p>
-        </li>
-        {% endfor %}
+        </li>{% endfor %}
       </ol>
     LIQUID
     end
@@ -24,12 +17,10 @@ module Templates
     def handlebars
     <<-HANDLEBARS
       <ol>
-        {{#posts}}
-        <li>
+        {{#posts}}<li>
           <h3>{{title}}</h3>
           <p>{{author}}</p>
-        </li>
-        {{/posts}}
+        </li>{{/posts}}
       </ol>
     HANDLEBARS
     end
