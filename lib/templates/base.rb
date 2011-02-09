@@ -12,6 +12,10 @@ module Templates
     
     
     
+    def setup
+      # do nothing
+    end
+    
     def erb
       raise NotImplementedError
     end
@@ -28,9 +32,9 @@ module Templates
     
     def render(kind)
       case kind
-      when :erb;          ERB.new(self.erb).result(binding)
-      when :liquid;       Liquid::Template.parse(self.liquid).render(@__context)
-      when :handlebars;   Handlebars.compile(self.handlebars).call(@__context)
+      when :erb;          setup; ERB.new(self.erb).result(binding)
+      when :liquid;       setup; Liquid::Template.parse(self.liquid).render(@__context)
+      when :handlebars;   setup; Handlebars.compile(self.handlebars).call(@__context)
       end
     end
     

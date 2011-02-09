@@ -7,6 +7,7 @@ module Factory
       {
         :title => "Hello World",
         :author => "Factory",
+        :date => Date.new(2011, 2, 9),
         :body => "In the tradition of all good programing experiments...",
         :comments => [
           "Tweet.",

@@ -1,6 +1,6 @@
-class Post < Struct.new(:title, :body, :author, :comments)
+class Post < Struct.new(:title, :body, :date, :author, :comments)
   
-  liquid_methods :title, :body, :author, :comments
+  liquid_methods :title, :body, :date, :author, :comments
   
   def initialize(attributes)
     attributes.each {|key, value| send("#{key}=", value)}

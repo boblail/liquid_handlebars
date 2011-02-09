@@ -1,5 +1,3 @@
-require 'templates/base'
-
 module Templates
   class SimplePost < Base
     
