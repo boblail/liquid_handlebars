@@ -1,3 +1,14 @@
-### Liquid Handlebars
+## Liquid Handlebars
 
 A small framework for testing different templating engines in different situations.
+
+### Templates
+
+Currently, I've implemented [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html), [Liquid](https://github.com/tobi/liquid), and [Handlebars.rb](https://github.com/cowboyd/handlebars.rb).
+
+With the most basic test, my initial set of results are:
+
+                      user     system      total        real
+    erb:          0.210000   0.000000   0.210000 (  0.217223)
+    liquid:       0.530000   0.000000   0.530000 (  0.539474)
+    handlebars:   0.930000   0.020000   0.950000 (  0.939367)
