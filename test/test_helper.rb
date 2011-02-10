@@ -6,7 +6,8 @@ require 'test/unit'
 require 'benchmark'
 
 require 'factory'
-require 'templates'
+require 'template_renderer'
+
 
 BENCHMARK_TIMES = (ENV['TIMES'] || 1000).to_i
 
@@ -32,7 +33,7 @@ module TemplateTestHelper
   
   def test_performance
     puts ""
-    puts "#{template_class} Benchmark:"
+    puts "#{test_name} Benchmark:"
     Benchmark.bmbm do |b|
       b.report("erb:")                      { times.times {template.render(:erb)}           }
       b.report("liquid:")                   { times.times {template.render(:liquid)}        }
@@ -51,20 +52,24 @@ protected
     BENCHMARK_TIMES
   end
   
-  
-  def template
-    @template ||= eval("Templates::#{template_class}").new
-  end
-  
-  
-  def template_class
-    @template_class ||= self.class.name.match(/(.*)Test/)[1]
-  end
-  
-  
   def expected_html
-    @expected_html || raise(NotImplementedError)
+    html
   end
+  
+  def test_name
+    @test_name ||= self.class.name.match(/(.*)Test/)[1]
+  end
+  
+  def prepare_template(context)
+    context.each {|key, value| instance_variable_set("@#{key}", value) }
+    @template = TemplateRenderer.new(context)
+    @template.liquid = liquid if respond_to?(:liquid)
+    @template.erb = erb if respond_to?(:erb)
+    @template.handlebars = handlebars if respond_to?(:handlebars)
+  end
+  
+  attr_reader :template
+  
   
   
 end
