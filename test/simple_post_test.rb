@@ -10,14 +10,14 @@ class SimplePostTest < Test::Unit::TestCase
   
   
   def html
-    <<-HTML
+  <<-HTML
     <ol>
       <li>
         <h3>Hello World</h3>
         <p>Factory</p>
       </li>
     </ol>
-    HTML
+  HTML
   end
   
   def liquid
