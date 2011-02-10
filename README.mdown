@@ -6,9 +6,21 @@ A small framework for testing different templating engines in different situatio
 
 Currently, I've implemented [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html), [Liquid](https://github.com/tobi/liquid), and [Handlebars.rb](https://github.com/cowboyd/handlebars.rb).
 
+### Results
+
 With the most basic test, my initial set of results are:
 
-                      user     system      total        real
-    erb:          0.210000   0.000000   0.210000 (  0.217223)
-    liquid:       0.530000   0.000000   0.530000 (  0.539474)
-    handlebars:   0.930000   0.020000   0.950000 (  0.939367)
+                                    user     system      total        real
+    erb:                        0.250000   0.000000   0.250000 (  0.254124)
+    liquid:                     0.690000   0.000000   0.690000 (  0.687987)
+    handlebars:                 0.480000   0.000000   0.480000 (  0.492988)
+    liquid (precompiled):       0.470000   0.000000   0.470000 (  0.464284)
+    handlebars (precompiled):   0.090000   0.000000   0.090000 (  0.096169)
+
+
+### Installing and Testing
+
+    git clone git://github.com/boblail/liquid_handlebars.git
+    cd liquid_handlebars
+    bundle install
+    rake test
