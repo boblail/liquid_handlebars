@@ -1,16 +1,20 @@
 GIT
-  remote: git://github.com/cowboyd/handlebars.rb.git
-  revision: f308b3acf77f823a08708d23ce0b2a337569331e
-  submodules: true
+  remote: git://github.com/boblail/handlebars.rb.git
+  revision: 35c81167efed27bf7edb44d5d46ace4057cea41a
+  branch: without_submodules
   specs:
     handlebars (0.0.1)
+      multi_json
       therubyracer (~> 0.8.0.pre2)
+      yajl-ruby (~> 0.7.8)
 
 GEM
   remote: http://rubygems.org/
   specs:
     liquid (2.2.2)
-    therubyracer (0.8.1.pre1)
+    multi_json (0.0.5)
+    therubyracer (0.8.1.pre2)
+    yajl-ruby (0.7.9)
 
 PLATFORMS
   ruby
@@ -18,3 +22,4 @@ PLATFORMS
 DEPENDENCIES
   handlebars!
   liquid
+  multi_json

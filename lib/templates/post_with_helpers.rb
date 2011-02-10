@@ -2,14 +2,8 @@ module Templates
   class PostWithHelpers < Base
     
     def setup
-      unless @setup
-        # Handlebars.registerHelper('format_date') do |*args|
-        #   puts args.inspect
-        #   ""
-        # end
-        
-        @setup = true
-      end
+      add_helper('format_date', lambda {|date| date.strftime('%B %Y') })
+      super
     end
     
     def erb
@@ -39,7 +33,7 @@ module Templates
       <ol>
         {{#posts}}<li>
           <h3>{{title}}</h3>
-          <p>{{format_date date}}</p>
+          <p>{{{format_date date}}}</p>
         </li>{{/posts}}
       </ol>
     HANDLEBARS
