@@ -34,9 +34,11 @@ module TemplateTestHelper
     puts ""
     puts "#{template_class} Benchmark:"
     Benchmark.bmbm do |b|
-      b.report("erb:")        { times.times {template.render(:erb)}         }
-      b.report("liquid:")     { times.times {template.render(:liquid)}      }
-      b.report("handlebars:") { times.times {template.render(:handlebars)}  }
+      b.report("erb:")                      { times.times {template.render(:erb)}           }
+      b.report("liquid:")                   { times.times {template.render(:liquid)}        }
+      b.report("handlebars:")               { times.times {template.render(:handlebars)}    }
+      b.report("liquid (precompiled):")     { times.times {template.render(:liquid_pre)}    }
+      b.report("handlebars (precompiled):") { times.times {template.render(:handlebars_pre)}}
     end
     puts ""
   end
